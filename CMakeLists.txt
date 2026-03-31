@@ -19,7 +19,7 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-add_executable(BigIntTests tests/test_BigInt.cpp)
+add_executable(BigIntTests tests/test_BigInt.cpp tests/test_BigInt_add.cpp tests/test_BigInt_mult.cpp)
 target_link_libraries(BigIntTests PRIVATE BigIntLib GTest::gtest_main)
 
 include(GoogleTest)

@@ -1,10 +1,13 @@
 #include <iostream>
 
+#include "BigInt.hpp"
+
 int main() {
-    int x = 69;
-    std::cout << "value of x before: " << x << std::endl;
-    int* x_p = &x;
-    *x_p = 0;
-    std::cout << "value of x after: " << x << std::endl;
-    return x;
+    BigInt a(0);
+    BigInt b("123");
+    std::cout << "value of a before: " << a.toInt() << std::endl;
+    a = BigInt(a.toInt() + b.toInt());
+    std::cout << "value of a after: " << a.toInt() << std::endl;
+
+    return 0;
 }

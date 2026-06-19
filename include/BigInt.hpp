@@ -51,8 +51,10 @@ public:
     /// @brief removed leading zeros.
     void normalize();
 
-    /// @brief extends the vector to have @p num_digits digits after the call by adding leading zeros.
-    /// @param num_digits the amount of digits wanted after calling this function.
+    /// @brief extends the vector to have @p num_digits digits after the call by
+    /// adding leading zeros.
+    /// @param num_digits the amount of digits wanted after calling this
+    /// function.
     /// @attention only extends! Cannot make the number smaller than before!
     void set_number_of_digits(size_t num_digits);
 
@@ -60,4 +62,8 @@ public:
     /// @return this number as an int.
     /// @attention Not safe for large numbers!
     int toInt() const;
+
+    /// @brief transforms the BigInt to a string
+    /// @return the number as a string
+    std::string toString() const;
 };

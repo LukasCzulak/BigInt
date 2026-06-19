@@ -17,7 +17,8 @@ BigInt::BigInt(const std::string& val) {
         if (c >= '0' && c <= '9') {
             digits.push_back(static_cast<uint8_t>(c - '0'));
         } else {
-            throw std::invalid_argument("Encountered non digits in string constructor!");
+            throw std::invalid_argument(
+                "Encountered non digits in string constructor!");
         }
     }
 
@@ -90,12 +91,15 @@ BigInt BigInt::operator*(const BigInt& other) const {
             const uint8_t digit_inner = other.get_digit(j);
             const uint8_t previous_digit = res.get_digit(i + j);
 
-            // new digit is digits from original numbers multiplied + carry from inner loop + carry between loop
-            const uint8_t new_digit = digit_outer * digit_inner + carry + previous_digit;
+            // new digit is digits from original numbers multiplied + carry from
+            // inner loop + carry between loop
+            const uint8_t new_digit =
+                digit_outer * digit_inner + carry + previous_digit;
             carry = new_digit / 10;  // split number
             res.digits[i + j] = new_digit % 10;
         }
-        res.digits[i + other.num_digits()] = carry;  // after each loop store the carry for the next loop
+        res.digits[i + other.num_digits()] =
+            carry;  // after each loop store the carry for the next loop
     }
 
     res.normalize();  // possible leading zeros
@@ -109,5 +113,16 @@ int BigInt::toInt() const {
         acc += digit * multiplier;
         multiplier *= 10;
     }
+    return acc;
+}
+
+std::string BigInt::toString() const {
+    std::string acc = "";
+    acc.resize(this->num_digits());
+
+    for (size_t i = 0; i < this->num_digits(); ++i) {
+        acc[i] = this->get_digit(i);
+    }
+
     return acc;
 }

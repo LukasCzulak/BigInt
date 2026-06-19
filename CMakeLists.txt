@@ -5,7 +5,11 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_library(BigIntLib src/BigInt.cpp)
+add_library(BigIntLib 
+  src/BigInt.cpp
+  src/Lexer.cpp
+  src/Parser.cpp
+  src/AST.cpp)
 target_include_directories(BigIntLib PUBLIC include)
 
 add_executable(BigIntApp src/main.cpp)
@@ -19,7 +23,13 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-add_executable(BigIntTests tests/test_BigInt.cpp tests/test_BigInt_add.cpp tests/test_BigInt_mult.cpp)
+add_executable(BigIntTests 
+  tests/test_BigInt.cpp 
+  tests/test_BigInt_add.cpp 
+  tests/test_BigInt_mult.cpp
+  tests/test_Lexer.cpp 
+  tests/test_Parser.cpp
+)
 target_link_libraries(BigIntTests PRIVATE BigIntLib GTest::gtest_main)
 
 include(GoogleTest)

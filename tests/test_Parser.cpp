@@ -26,6 +26,15 @@ TEST(ParserTest, BasicAddition) {
     EXPECT_EQ(res.toInt(), 25);
 }
 
+TEST(ParserTest, BigAddition) {
+    std::string str = "0";
+    for (int i = 0; i < 1000; ++i) {
+        str = str + " + 1";
+    }
+    BigInt res = parse_and_evaluate(str);
+    EXPECT_EQ(res.toInt(), 1000);
+}
+
 TEST(ParserTest, BasicMultiplication) {
     BigInt res = parse_and_evaluate("5 * 3");
     EXPECT_EQ(res.toInt(), 15);

@@ -2,16 +2,7 @@
 
 #include "Lexer.hpp"
 #include "Parser.hpp"
-
-BigInt parse_and_evaluate(const std::string& input) {
-    Lexer lexer(input);
-    std::vector<Token> tokens = lexer.tokenize();
-
-    Parser parser(tokens);
-    std::unique_ptr<ASTNode> root = parser.parse();
-
-    return root->evaluate();
-}
+#include "Utils.hpp"
 
 TEST(ParserTest, SingleNumber) {
     BigInt res = parse_and_evaluate("5");

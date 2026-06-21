@@ -28,6 +28,7 @@ add_executable(BigIntTests
   tests/test_BigInt_mult.cpp
   tests/test_Lexer.cpp 
   tests/test_Parser.cpp
+  tests/test_LargeNumbers.cpp
 )
 target_link_libraries(BigIntTests PRIVATE BigIntLib GTest::gtest_main)
 

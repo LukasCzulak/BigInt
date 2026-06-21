@@ -8,8 +8,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_library(BigIntLib 
   src/BigInt.cpp
   src/Lexer.cpp
-  src/Parser.cpp
-  src/AST.cpp)
+  src/Parser.cpp)
 target_include_directories(BigIntLib PUBLIC include)
 
 add_executable(BigIntApp src/main.cpp)

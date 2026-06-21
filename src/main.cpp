@@ -10,7 +10,7 @@
 
 int main(int argc, char* argv[]) {
     // Check arguments
-    if (argc < 2 || argc > 3) {
+    if (argc < 3 || argc > 4) {
         std::cerr
             << "Usage: " << argv[0]
             << " <input_filepath> <output_filepath> [optional: --print]\n";
@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
         std::cout << "Finished writing to output file!\n";
 
         // Printing to cout
-        if (argc == 3 && argv[3] == "print") {
+        if (argc == 4 && std::string(argv[3]) == "--print") {
             std::cout << "Starting to write to cout...\n\n";
             std::cout << result_str << "\n\n";
             std::cout << "Finished writing to cout!\n";

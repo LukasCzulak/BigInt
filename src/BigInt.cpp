@@ -115,13 +115,14 @@ int BigInt::toInt() const {
     }
     return acc;
 }
-
 std::string BigInt::toString() const {
     std::string acc = "";
-    acc.resize(this->num_digits());
+    size_t size = this->num_digits();
+    acc.resize(size);
 
-    for (size_t i = 0; i < this->num_digits(); ++i) {
-        acc[i] = this->get_digit(i);
+    for (size_t i = 0; i < size; ++i) {
+        // flip the digits
+        acc[size - 1 - i] = this->get_digit(i) + '0';
     }
 
     return acc;

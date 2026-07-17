@@ -26,8 +26,8 @@ TEST(LargeNumbers, BigMultiplication2) {
         "123456789 * 123456789 * 123456789 * 123456789 * 123456789 * 123456789";
     std::string res = parse_and_evaluate(task).toString();
     // 3540705968149597751242378595390670323015412790761
-    // When the numbers get too big, I cannot write down the actual strings by
-    // hand, but only a few key-digits
+    // When the numbers get too big, writing down the actual strings by
+    // hand will be impossible, so only a few key-digits needs to be sufficient
     EXPECT_EQ(res[0], '3');
     EXPECT_EQ(res[1], '5');
     EXPECT_EQ(res[2], '4');

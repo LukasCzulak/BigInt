@@ -18,6 +18,7 @@ include(FetchContent)
 FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip
+  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
@@ -34,3 +35,20 @@ target_link_libraries(BigIntTests PRIVATE BigIntLib GTest::gtest_main)
 
 include(GoogleTest)
 gtest_discover_tests(BigIntTests)
+
+# Benchmarks
+set(BENCHMARK_ENABLE_TESTING OFF CACHE BOOL "" FORCE)
+set(BENCHMARK_ENABLE_GTEST_TESTS OFF CACHE BOOL "" FORCE)
+set(BENCHMARK_ENABLE_INSTALL OFF CACHE BOOL "" FORCE)
+
+FetchContent_Declare(
+  googlebenchmark
+  URL https://github.com/google/benchmark/archive/refs/tags/v1.10.0.zip
+  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+)
+FetchContent_MakeAvailable(googlebenchmark)
+
+add_executable(BigIntBenchmarks
+  benchmarks/bench_BigInt.cpp
+)
+target_link_libraries(BigIntBenchmarks PRIVATE BigIntLib benchmark::benchmark_main)

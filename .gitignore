@@ -40,5 +40,5 @@
 # debug information files
 *.dwo
 
-# CMake build folder
-build
+# CMake build folders
+build*

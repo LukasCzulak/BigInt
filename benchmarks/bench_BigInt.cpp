@@ -74,6 +74,7 @@ static void Benchmark_BigIntToString(benchmark::State& state) {
     state.SetComplexityN(n);
 }
 
+// TODO: Currently hardcoded and only a few operations
 static void Benchmark_BigIntPipeline(benchmark::State& state) {
     const size_t n = state.range(0);
     const std::string str1 = generate_digits(n, 42);

@@ -57,17 +57,20 @@ BigInt BigInt::operator+(const BigInt& other) const {
     // Find out which number has more digits
     size_t maxSize = std::max(this->num_digits(), other.num_digits());
 
+    res.set_number_of_digits(maxSize + 1);
+
     // loop from lowest digit to highest
-    for (size_t i = 0; i < maxSize; ++i) {
+    size_t i = 0;
+    for (; i < maxSize; ++i) {
         uint8_t sum = this->get_digit(i) + other.get_digit(i) + carry;
 
         carry = sum / 10;
-        res.digits.push_back(sum % 10);
+        res.digits[i] = sum % 10;
     }
 
     // last carry
     if (carry > 0) {
-        res.digits.push_back(carry);
+        res.digits[i] = carry;
     }
 
     return res;

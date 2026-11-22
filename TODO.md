@@ -4,7 +4,7 @@ This list will keep track of what I still have on my mind. I am not yet sure wha
 
 ## Core Features
 - [x] Create this TODO List
-- [ ] Build a Reliable Benchmarking/Timing Suite
+- [x] Build a Reliable Benchmarking/Timing Suite
 - [ ] Improve basic structure: `uint8_t` -> ?
 
 ## Math operations
